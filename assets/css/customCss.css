@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  align-items: center;
+  margin:auto;
+  width:900px;
+}
+
+#login-form{
+    margin: auto;
+    margin-top: 120px;
+}
