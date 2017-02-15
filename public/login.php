@@ -1,11 +1,9 @@
 <?php
-ini_set('display_errors', 'on');
-error_reporting(E_ALL);
-require_once('blogtheme/dbconnect.php');
-session_start();
-if(isset($_SESSION['username']) || isset($_SESSION['logged_in'])){
+require_once('../bootstrap.php');
+
+if(isset($_SESSION['logged_in'])){
     //if logged in. Redirect them back to the dashboard page.
-    header('Location: blogtheme/dashboard.php');
+    header('Location: dashboard.php');
     exit;
 }
 // Fetch variables from firstpage.php
@@ -13,8 +11,8 @@ if(isset($_POST['user'])){ $user = $_POST['user']; }
 if(isset($_POST['my_password'])){ $password = $_POST['my_password'];  }
 if ( isset($_POST['btn-sign-in']) ){
     $error=false;
-    require_once('testInput.php');
-    $user=test_input($user);
+    
+    $user= test_input($user);
     $password = test_input($password);
 
    //Check if email is empty
@@ -57,7 +55,7 @@ if ( isset($_POST['btn-sign-in']) ){
         $_SESSION['userId']=$results['id'];
         $_SESSION['logged_in'] = time();
         $_SESSION['email']=$results['email'];        
-        header('location:blogtheme/dashboard.php');
+        header('location:dashboard.php');
         exit;
       }
       //If credentials do not match

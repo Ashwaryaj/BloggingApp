@@ -1,12 +1,9 @@
 <?php
-ini_set('display_errors', 'on');
-error_reporting(E_ALL);
-session_start();
-require_once('dbconnect.php');
+require_once('../bootstrap.php');
 //Check if the user is logged in.
 if(!isset($_SESSION['username']) || !isset($_SESSION['logged_in'])){
     //User not logged in. Redirect them back to the login.php page.
-    header('Location: ../login.php');
+    header('Location: login.php');
     exit;
 }
 if(isset($_POST['title'])){ $title = $_POST['title']; } 
@@ -79,67 +76,7 @@ if ( isset($_POST['btn-create-blog']) || isset($_POST['btn-save-in-drafts'])) {
 }
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Add a post</title>
-    <!-- Bootstrap Core CSS -->
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Theme CSS -->
-    <link href="../assets/css/clean-blog.min.css" rel="stylesheet">
-    <!-- Theme CSS -->
-    <link href="../assets/css/create-blog.css" rel="stylesheet">
-    <link href="../assets/extra.css" rel="stylesheet">
-    <!-- Custom Fonts -->
-    <link href="../assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-
-</head>
-
-<body>
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    Menu <i class="fa fa-bars"></i>
-                </button>
-                <p class="navbar-brand" >
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="dashboard.php">Home</a>
-                    </li>
-                    <li>
-                        <a href="createBlog.php"> Post</a>
-                    </li>
-                    <li>
-                        <a href="viewAll.php">View All</a>
-                    </li>
-                    <li>
-                        <a href="logout.php">Logout</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
+<?php include_once('../layouts/header.php');?>
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
     <header class="intro-header" style="background-image: url('../assets/img/home-bg.jpg')">

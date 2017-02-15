@@ -1,3 +1,3 @@
 <?php
-	echo "Error 500: Can not establish connection";
+    echo "Error 500: Internal server error";
 ?>
